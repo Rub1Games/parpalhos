@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Culture</title>
+    
+        <!-- Stylesheet -->
+        <link href="/css/materialize.min.css" rel="stylesheet">
+        <link href="/css/custom.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
+    
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="/js/materialize.min.js"></script>
+        <script src="/js/custom.min.js" crossorigin="anonymous"></script>
+        <script src="/js/custom2.js" crossorigin="anonymous"></script>
+
+        <%- include("particles/navbar") %>
+
+        <div class="v ai" id="inicio">
+            <div class="bz">
+                <img src="<%= parpalho.img %>" alt="">
+            </div>
+            <div class="header-wrapper c valign-wrapper">
+                <div class="d iv">
+                    <h1 style="color:white;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"><%= parpalho.name %></h1>
+                </div>
+            </div>
+        </div>
+
+        <% if(parpalho.description) { %>
+            <div class="v gw valign-wrapper" style="height: 75%">
+                <div class="c ci">
+                    <div class="d iv jc offset-m1 ef">
+                        <div class="c fb" data-duration="0" data-staggereddelay=".9">
+                            <div class="d iv jo kk fade-in-out" style="margin-left: 34%"> <!-- TRUQUE1 -->
+                                <h4><%- parpalho.description %></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+        <% if(parpalho.videoURL) { %>
+            <div class="v gw valign-wrapper" style="height: 50%">
+                <div class="c ci">
+                    <div class="d iv jc offset-m1 ef">
+                        <div class="c"> 
+                            <div class="d iv"><h2 class="section-title">Vídeo</h2></div>
+                        </div>
+                        <div class="c fb" data-duration="0" data-staggereddelay=".9">
+                            <div class="d iv jo kk fade-in-out" style="margin-left: 25.5%"> <!-- TRUQUE1 -->
+                                <iframe src="<%= parpalho.videoURL %>" width="640" height="360" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+        <% if(parpalho.price) { %>
+            <div class="v gw valign-wrapper" style="height: 50%">
+                <div class="c ci">
+                    <div class="d iv jc offset-m1 ef">
+                        <div class="c"> 
+                            <div class="d iv"><h2 class="section-title">Preço por grama: <%- parpalho.price/parpalho.mass %> €</h2></div>
+                        </div>
+                        <div class="c fb" data-duration="0" data-staggereddelay=".9">
+                            <div class="d iv jo kk fade-in-out"> <!-- TRUQUE1 -->
+                                <input id="numeric" type="number" style="margin: auto">
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_donations" />
+                                    <input type="hidden" name="business" value="wizzardy2018@gmail.com" />
+                                    <input type="hidden" name="item_name" value="Venda de estupefacientes" />
+                                    <input type="hidden" name="currency_code" value="EUR" />
+                                    <input id="value" type="hidden" name="amount" value="50" />
+                                    <input type="image" src="https://www.paypalobjects.com/pt_PT/PT/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faça donativos com o botão PayPal" />
+                                    <img alt="" border="0" src="https://www.paypal.com/pt_PT/i/scr/pixel.gif" width="1" height="1" />
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        <script>
+            $("#numeric").on('load', function() {                                                                                                                     
+                $('#value').val(price * this.value)
+            });
+            var price = <%= parpalho.price/parpalho.mass %>;
+            $(document).on('keyup mouseup', '#numeric', function() {                                                                                                                     
+                $('#value').val(price * this.value)
+            });
+        </script>
+        <%- include("particles/footer") %>
+    </body>
+</html>

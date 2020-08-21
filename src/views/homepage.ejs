@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Parpalho LDA.</title>
+        <link href="/css/custom.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="/js/materialize.min.js"></script>
+        <script src="/js/custom.min.js"></script>
+        <script src="/js/custom2.js"></script>
+
+        <%- include("particles/navbar") %>
+
+        <div class="v ai" id="inicio">
+            <div class="bz">
+                <img src="https://wallpaperaccess.com/full/784181.jpg" alt="">
+            </div>
+              <div class="header-wrapper c valign-wrapper">
+                <div class="d iv">
+                      <h1 style="color:white;">Parpalhão LDA</h1>
+                </div>
+              </div>
+        </div>
+    
+        <div id="introducao" class="v gw valign-wrapper" style="height: 75%">
+            <div class="c ci">
+                <div class="d iv jc offset-m1 ef">
+                    <div class="c"> 
+                        <div class="d iv"><h2 class="section-title">Introdução</h2></div>
+                    </div>
+                    <div class="c fb" data-duration="0" data-staggereddelay=".9">
+                        <div class="d iv jo kk fade-in-out"> <!-- TRUQUE1 -->
+                          <h4 style="text-align:center;">Os parpalhões mais bacanos do mundo zé compras a preço baratucho.</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="interview" class="v r full-height" style="background-color: #191919;">
+            <div class="c">
+              <div class="d iv jc offset-m1 ef">
+                <h1>Parpalhos</h1>
+                <% for(let parpalho of parpalhos) { %>
+                    <div class="d iv jo kk" style="cursor:pointer;" onclick="location.href = '/parpalho/<%= parpalho.name %>'">
+                        <div class="m fade-in-out up-in-out" data-duration="0">
+                            <div class="card-image">
+                                <img src="<%= parpalho.img %>" width="640px" height="360px">
+                                <span class="card-title" style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"><%= parpalho.name %></span>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                <div class="c masonry-grid">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <%- include("./particles/footer") %>
+    </body>
+</html>

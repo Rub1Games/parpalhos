@@ -1,0 +1,25 @@
+<footer class="page-footer">
+    <div class="dv">
+        <div class="c">
+        <div class="d ka ko">
+            <a><img style="width:200px;height:100px;margin-left:-10px;" src="https://this.might-be-super.fun/e01dad.png" alt=""></a>
+            <p>Made with &lt;3 by Ruben and Lucas.</p>
+        </div>
+        <div class="d ka ko">
+            <h5>Parpalhos</h5>
+            <ul>
+                <% for(let parpalho of parpalhos) { %>
+                    <li><a href="/parpalho/<%= parpalho.name %>"><%= parpalho.name %></a></li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="d ka ko">
+            <h5>Contacto</h5>
+            <ul>
+                <li><a href="https://www.facebook.com/wizarddrugs/">Facebook</a></li>
+                <li><a href="mailto:wizarddrugs@gmail.com">Email</a></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</footer>
